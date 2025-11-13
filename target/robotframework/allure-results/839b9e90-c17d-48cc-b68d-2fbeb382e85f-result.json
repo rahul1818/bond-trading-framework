@@ -1,0 +1,56 @@
+{
+  "uuid" : "839b9e90-c17d-48cc-b68d-2fbeb382e85f",
+  "name" : "Risk Breach Attempt Fails",
+  "fullName" : "Bond Trading.Risk Breach Attempt Fails",
+  "status" : "passed",
+  "stage" : "finished",
+  "start" : 1762973083363,
+  "stop" : 1762973083399,
+  "duration" : 36,
+  "statusDetails" : {
+    "message" : "",
+    "trace" : ""
+  },
+  "steps" : [ {
+    "name" : "BuiltIn.Run Keyword And Expect Error",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973083364,
+    "stop" : 1762973083398,
+    "duration" : 34,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "failed",
+    "stage" : "finished",
+    "start" : 1762973083365,
+    "stop" : 1762973083396,
+    "duration" : 31,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  } ],
+  "attachments" : [ ],
+  "parameters" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "testClass",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "package",
+    "value" : "com.trading.robot.tests"
+  }, {
+    "name" : "framework",
+    "value" : "robotframework"
+  } ]
+}

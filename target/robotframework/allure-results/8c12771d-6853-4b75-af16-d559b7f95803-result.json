@@ -1,0 +1,95 @@
+{
+  "uuid" : "8c12771d-6853-4b75-af16-d559b7f95803",
+  "name" : "Rapid Market Update Reflected",
+  "fullName" : "Bond Trading.Rapid Market Update Reflected",
+  "status" : "passed",
+  "stage" : "finished",
+  "start" : 1762973073328,
+  "stop" : 1762973083362,
+  "duration" : 10034,
+  "statusDetails" : {
+    "message" : "",
+    "trace" : ""
+  },
+  "steps" : [ {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Subscribe To Market Feed",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973073331,
+    "stop" : 1762973073334,
+    "duration" : 3,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Sleep",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973073334,
+    "stop" : 1762973083344,
+    "duration" : 10010,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Get Captured Market Updates",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973083345,
+    "stop" : 1762973083351,
+    "duration" : 6,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Get Length",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973083352,
+    "stop" : 1762973083355,
+    "duration" : 3,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Should Be True",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973083355,
+    "stop" : 1762973083361,
+    "duration" : 6,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  } ],
+  "attachments" : [ ],
+  "parameters" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "testClass",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "package",
+    "value" : "com.trading.robot.tests"
+  }, {
+    "name" : "framework",
+    "value" : "robotframework"
+  } ]
+}

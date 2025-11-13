@@ -1,0 +1,277 @@
+{
+  "uuid" : "3d70e019-8937-4cdc-9f31-3ef00f006141",
+  "name" : "Create And Confirm Valid Trade",
+  "fullName" : "Bond Trading.Create And Confirm Valid Trade",
+  "status" : "passed",
+  "stage" : "finished",
+  "start" : 1762973053915,
+  "stop" : 1762973059264,
+  "duration" : 5349,
+  "statusDetails" : {
+    "message" : "",
+    "trace" : ""
+  },
+  "steps" : [ {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Load Trades From Csv",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973053917,
+    "stop" : 1762973053932,
+    "duration" : 15,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Get From List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973053932,
+    "stop" : 1762973053942,
+    "duration" : 10,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Create Trade From Data",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973053943,
+    "stop" : 1762973054173,
+    "duration" : 230,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973053945,
+    "stop" : 1762973054166,
+    "duration" : 221,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Return From Keyword",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973054167,
+    "stop" : 1762973054171,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Sleep",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973054173,
+    "stop" : 1762973057179,
+    "duration" : 3006,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Run Keyword And Return Status",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973057179,
+    "stop" : 1762973057205,
+    "duration" : 26,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Execute Trade And Confirm",
+    "status" : "failed",
+    "stage" : "finished",
+    "start" : 1762973057181,
+    "stop" : 1762973057204,
+    "duration" : 23,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Execute Trade",
+    "status" : "failed",
+    "stage" : "finished",
+    "start" : 1762973057184,
+    "stop" : 1762973057200,
+    "duration" : 16,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Run Keyword If",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973057205,
+    "stop" : 1762973059241,
+    "duration" : 2036,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Run Keywords",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973057209,
+    "stop" : 1762973059241,
+    "duration" : 2032,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Sleep",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973057210,
+    "stop" : 1762973059219,
+    "duration" : 2009,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Execute Trade And Confirm",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059220,
+    "stop" : 1762973059240,
+    "duration" : 20,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Execute Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059224,
+    "stop" : 1762973059231,
+    "duration" : 7,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Confirm Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059231,
+    "stop" : 1762973059239,
+    "duration" : 8,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Get Trade State History",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059241,
+    "stop" : 1762973059246,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.List Should Contain Value",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059247,
+    "stop" : 1762973059252,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Compare Execution Price To Market Average",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059253,
+    "stop" : 1762973059258,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Should Be True",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059259,
+    "stop" : 1762973059263,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  } ],
+  "attachments" : [ ],
+  "parameters" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "testClass",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "package",
+    "value" : "com.trading.robot.tests"
+  }, {
+    "name" : "framework",
+    "value" : "robotframework"
+  } ]
+}

@@ -1,0 +1,1146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generator="Robot 3.2.2 (Jython 2.7.2 on java23.0.2)" generated="20251112 18:44:13.589">
+<suite source="/Users/admin/Downloads/E-trading-robot-framework/bond-trading-framework/src/test/robot/tests" name="Tests" id="s1">
+<suite source="/Users/admin/Downloads/E-trading-robot-framework/bond-trading-framework/src/test/robot/tests/bond_trading.robot" name="Bond Trading" id="s1-s1">
+<kw type="setup" library="trading_keywords" name="Initialize Market">
+<kw library="BuiltIn" name="Create List">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>US1234567890</arg>
+<arg>GB0987654321</arg>
+<arg>DE4455667788</arg>
+<arg>FR5566778899</arg>
+<arg>JP6677889900</arg>
+</arguments>
+<assign>
+<var>@{isins}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:13.879">@{isins} = [ US1234567890 | GB0987654321 | DE4455667788 | FR5566778899 | JP6677889900 ]</msg>
+<status endtime="20251112 18:44:13.880" starttime="20251112 18:44:13.869" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Start Market Data Feed">
+<arguments>
+<arg>${isins}</arg>
+</arguments>
+<status endtime="20251112 18:44:13.894" starttime="20251112 18:44:13.880" status="PASS"></status>
+</kw>
+<kw type="for" name="${isin} IN [ @{isins} ]">
+<kw type="foritem" name="${isin} = US1234567890">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Subscribe To Market Feed">
+<arguments>
+<arg>${isin}</arg>
+</arguments>
+<status endtime="20251112 18:44:13.900" starttime="20251112 18:44:13.897" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.900" starttime="20251112 18:44:13.896" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${isin} = GB0987654321">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Subscribe To Market Feed">
+<arguments>
+<arg>${isin}</arg>
+</arguments>
+<status endtime="20251112 18:44:13.903" starttime="20251112 18:44:13.901" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.903" starttime="20251112 18:44:13.901" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${isin} = DE4455667788">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Subscribe To Market Feed">
+<arguments>
+<arg>${isin}</arg>
+</arguments>
+<status endtime="20251112 18:44:13.907" starttime="20251112 18:44:13.904" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.907" starttime="20251112 18:44:13.903" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${isin} = FR5566778899">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Subscribe To Market Feed">
+<arguments>
+<arg>${isin}</arg>
+</arguments>
+<status endtime="20251112 18:44:13.910" starttime="20251112 18:44:13.908" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.910" starttime="20251112 18:44:13.907" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${isin} = JP6677889900">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Subscribe To Market Feed">
+<arguments>
+<arg>${isin}</arg>
+</arguments>
+<status endtime="20251112 18:44:13.914" starttime="20251112 18:44:13.911" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.914" starttime="20251112 18:44:13.911" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.914" starttime="20251112 18:44:13.895" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:13.914" starttime="20251112 18:44:13.867" status="PASS"></status>
+</kw>
+<test name="Create And Confirm Valid Trade" id="s1-s1-t1">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:13.931">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:13.932" starttime="20251112 18:44:13.917" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:13.941">${row} = {u'trader': u'Alice', u'isin': u'US1234567890', u'tradeId': u'', u'side': u'BUY', u'limitPrice': 101.25, u'quantity': 1000000}</msg>
+<status endtime="20251112 18:44:13.942" starttime="20251112 18:44:13.932" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:14.165">${trade_id} = 5a40ced9-d862-4d27-b3a0-162f4bbfb2ed</msg>
+<status endtime="20251112 18:44:14.166" starttime="20251112 18:44:13.945" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:14.168">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:14.171" starttime="20251112 18:44:14.167" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:14.172">${trade_id} = 5a40ced9-d862-4d27-b3a0-162f4bbfb2ed</msg>
+<status endtime="20251112 18:44:14.173" starttime="20251112 18:44:13.943" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:17.177">Slept 3 seconds</msg>
+<status endtime="20251112 18:44:17.179" starttime="20251112 18:44:14.173" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Return Status">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Execute Trade And Confirm</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw library="trading_keywords" name="Execute Trade And Confirm">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trade">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20251112 18:44:17.200">TradeException: Execution failed due to network hiccup</msg>
+<status endtime="20251112 18:44:17.200" starttime="20251112 18:44:17.184" status="FAIL"></status>
+</kw>
+<status endtime="20251112 18:44:17.204" starttime="20251112 18:44:17.181" status="FAIL"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:17.205">${status} = False</msg>
+<status endtime="20251112 18:44:17.205" starttime="20251112 18:44:17.179" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>not ${status}</arg>
+<arg>Run Keywords</arg>
+<arg>Sleep</arg>
+<arg>2s</arg>
+<arg>AND</arg>
+<arg>Execute Trade And Confirm</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="BuiltIn" name="Run Keywords">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>Sleep</arg>
+<arg>2s</arg>
+<arg>AND</arg>
+<arg>Execute Trade And Confirm</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:19.217">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:19.219" starttime="20251112 18:44:17.210" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Execute Trade And Confirm">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trade">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:19.231" starttime="20251112 18:44:19.224" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Confirm Trade">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>${tolerance_bps}</arg>
+</arguments>
+<status endtime="20251112 18:44:19.239" starttime="20251112 18:44:19.231" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:19.240" starttime="20251112 18:44:19.220" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:19.241" starttime="20251112 18:44:17.209" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:19.241" starttime="20251112 18:44:17.205" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Trade State History">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${history}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:19.246">${history} = [CREATED, RETRY, EXECUTED, PENDING_CONFIRMATION, CONFIRMED]</msg>
+<status endtime="20251112 18:44:19.246" starttime="20251112 18:44:19.241" status="PASS"></status>
+</kw>
+<kw library="Collections" name="List Should Contain Value">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${history}</arg>
+<arg>CONFIRMED</arg>
+</arguments>
+<status endtime="20251112 18:44:19.252" starttime="20251112 18:44:19.247" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Compare Execution Price To Market Average">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${deviation}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:19.258">${deviation} = 2.4141</msg>
+<status endtime="20251112 18:44:19.258" starttime="20251112 18:44:19.253" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be True">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${deviation} &lt; 25</arg>
+</arguments>
+<status endtime="20251112 18:44:19.263" starttime="20251112 18:44:19.259" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:19.264" starttime="20251112 18:44:13.915" status="PASS"></status>
+</test>
+<test name="Invalid Instrument Should Fail" id="s1-s1-t2">
+<kw library="BuiltIn" name="Run Keyword And Expect Error">
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<arguments>
+<arg>*Instrument not found*</arg>
+<arg>Create Trade</arg>
+<arg>INVALID123</arg>
+<arg>Alice</arg>
+<arg>1000</arg>
+<arg>BUY</arg>
+<arg>100.0</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>INVALID123</arg>
+<arg>Alice</arg>
+<arg>1000</arg>
+<arg>BUY</arg>
+<arg>100.0</arg>
+</arguments>
+<msg level="FAIL" timestamp="20251112 18:44:19.289">TradeException: Instrument not found for ISIN INVALID123</msg>
+<status endtime="20251112 18:44:19.290" starttime="20251112 18:44:19.269" status="FAIL"></status>
+</kw>
+<status endtime="20251112 18:44:19.296" starttime="20251112 18:44:19.268" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:19.297" starttime="20251112 18:44:19.266" status="PASS"></status>
+</test>
+<test name="Price Deviation Above Tolerance Rejects Trade" id="s1-s1-t3">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:19.305">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:19.306" starttime="20251112 18:44:19.300" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:19.312">${row} = {u'trader': u'Bob', u'isin': u'GB0987654321', u'tradeId': u'', u'side': u'SELL', u'limitPrice': 99.75, u'quantity': 500000}</msg>
+<status endtime="20251112 18:44:19.313" starttime="20251112 18:44:19.306" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:19.338">${trade_id} = d9c75502-c2d5-47ae-9aab-9496d2da293d</msg>
+<status endtime="20251112 18:44:19.338" starttime="20251112 18:44:19.316" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:19.339">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:19.343" starttime="20251112 18:44:19.339" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:19.344">${trade_id} = d9c75502-c2d5-47ae-9aab-9496d2da293d</msg>
+<status endtime="20251112 18:44:19.344" starttime="20251112 18:44:19.313" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:21.349">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:21.350" starttime="20251112 18:44:19.344" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trade">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:21.355" starttime="20251112 18:44:21.351" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Apply Market Shock">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>10</arg>
+</arguments>
+<status endtime="20251112 18:44:21.361" starttime="20251112 18:44:21.355" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Confirm Trade">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>1</arg>
+</arguments>
+<status endtime="20251112 18:44:21.366" starttime="20251112 18:44:21.361" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Trade State History">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${history}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:21.373">${history} = [CREATED, EXECUTED, PENDING_CONFIRMATION, REJECTED]</msg>
+<status endtime="20251112 18:44:21.373" starttime="20251112 18:44:21.367" status="PASS"></status>
+</kw>
+<kw library="Collections" name="List Should Contain Value">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${history}</arg>
+<arg>REJECTED</arg>
+</arguments>
+<status endtime="20251112 18:44:21.378" starttime="20251112 18:44:21.373" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:21.379" starttime="20251112 18:44:19.298" status="PASS"></status>
+</test>
+<test name="Executing Already Confirmed Trade Raises Error" id="s1-s1-t4">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:21.386">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:21.387" starttime="20251112 18:44:21.382" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:21.392">${row} = {u'trader': u'Charlie', u'isin': u'DE4455667788', u'tradeId': u'', u'side': u'BUY', u'limitPrice': 100.1, u'quantity': 750000}</msg>
+<status endtime="20251112 18:44:21.393" starttime="20251112 18:44:21.387" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:21.480">${trade_id} = 1cbb43cf-c53b-4bbd-aa1d-c5f94f6116b4</msg>
+<status endtime="20251112 18:44:21.480" starttime="20251112 18:44:21.396" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:21.481">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:21.484" starttime="20251112 18:44:21.481" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:21.485">${trade_id} = 1cbb43cf-c53b-4bbd-aa1d-c5f94f6116b4</msg>
+<status endtime="20251112 18:44:21.485" starttime="20251112 18:44:21.393" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:23.488">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:23.491" starttime="20251112 18:44:21.485" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Execute Trade And Confirm">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trade">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:23.498" starttime="20251112 18:44:23.495" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Confirm Trade">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>${tolerance_bps}</arg>
+</arguments>
+<status endtime="20251112 18:44:23.503" starttime="20251112 18:44:23.498" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:23.503" starttime="20251112 18:44:23.492" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Expect Error">
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<arguments>
+<arg>*already terminal*</arg>
+<arg>Execute Trade</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trade">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="FAIL" timestamp="20251112 18:44:23.515">TradeException: Trade 1cbb43cf-c53b-4bbd-aa1d-c5f94f6116b4 is already terminal in state CONFIRMED</msg>
+<status endtime="20251112 18:44:23.516" starttime="20251112 18:44:23.504" status="FAIL"></status>
+</kw>
+<status endtime="20251112 18:44:23.518" starttime="20251112 18:44:23.504" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:23.518" starttime="20251112 18:44:21.380" status="PASS"></status>
+</test>
+<test name="Retry Logic Handles Injected Failure" id="s1-s1-t5">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:23.524">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:23.525" starttime="20251112 18:44:23.520" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:23.529">${row} = {u'trader': u'Diana', u'isin': u'FR5566778899', u'tradeId': u'', u'side': u'SELL', u'limitPrice': 102.35, u'quantity': 250000}</msg>
+<status endtime="20251112 18:44:23.529" starttime="20251112 18:44:23.525" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:23.598">${trade_id} = a9ba44ff-e6ce-4e74-b387-e33b0f825828</msg>
+<status endtime="20251112 18:44:23.598" starttime="20251112 18:44:23.531" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:23.599">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:23.602" starttime="20251112 18:44:23.599" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:23.603">${trade_id} = a9ba44ff-e6ce-4e74-b387-e33b0f825828</msg>
+<status endtime="20251112 18:44:23.603" starttime="20251112 18:44:23.529" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Inject Execution Failure">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:23.606" starttime="20251112 18:44:23.604" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:25.610">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:25.613" starttime="20251112 18:44:23.607" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Retry Execution With Defaults">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Retry Execution With Backoff">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>${MAX_RETRIES}</arg>
+</arguments>
+<status endtime="20251112 18:44:25.829" starttime="20251112 18:44:25.616" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:25.831" starttime="20251112 18:44:25.614" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Trade State History">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${history}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:25.838">${history} = [CREATED, RETRY, EXECUTED, PENDING_CONFIRMATION]</msg>
+<status endtime="20251112 18:44:25.838" starttime="20251112 18:44:25.832" status="PASS"></status>
+</kw>
+<kw library="Collections" name="List Should Contain Value">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${history}</arg>
+<arg>RETRY</arg>
+</arguments>
+<status endtime="20251112 18:44:25.843" starttime="20251112 18:44:25.838" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:25.843" starttime="20251112 18:44:23.519" status="PASS"></status>
+</test>
+<test name="Partial Fill Execution Captured" id="s1-s1-t6">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:25.850">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:25.850" starttime="20251112 18:44:25.845" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>4</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:25.856">${row} = {u'trader': u'Alice', u'isin': u'JP6677889900', u'tradeId': u'', u'side': u'BUY', u'limitPrice': 98.65, u'quantity': 400000}</msg>
+<status endtime="20251112 18:44:25.856" starttime="20251112 18:44:25.850" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:25.947">${trade_id} = dd85f633-8f36-4eca-a672-1a552eb26fef</msg>
+<status endtime="20251112 18:44:25.947" starttime="20251112 18:44:25.859" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:25.948">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:25.951" starttime="20251112 18:44:25.948" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:25.952">${trade_id} = dd85f633-8f36-4eca-a672-1a552eb26fef</msg>
+<status endtime="20251112 18:44:25.952" starttime="20251112 18:44:25.856" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Evaluate">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>int(${row['quantity']} / 2)</arg>
+</arguments>
+<assign>
+<var>${half}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:25.956">${half} = 200000</msg>
+<status endtime="20251112 18:44:25.957" starttime="20251112 18:44:25.952" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Force Partial Fill">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>${half}</arg>
+</arguments>
+<status endtime="20251112 18:44:25.961" starttime="20251112 18:44:25.957" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:27.965">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:27.966" starttime="20251112 18:44:25.961" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trade">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:27.972" starttime="20251112 18:44:27.968" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Trade Details">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${details}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:27.975">${details} = {u'filledQuantity': 200000, u'tradeId': u'dd85f633-8f36-4eca-a672-1a552eb26fef', u'duplicate': False, u'isin': u'JP6677889900', u'executionPrice': 99.977845, u'quantity': 400000, u'trader': u'Alice', ...</msg>
+<status endtime="20251112 18:44:27.976" starttime="20251112 18:44:27.972" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be True">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${details['filledQuantity']} &lt; ${details['quantity']}</arg>
+</arguments>
+<status endtime="20251112 18:44:27.982" starttime="20251112 18:44:27.976" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Trade State History">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${history}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:27.986">${history} = [CREATED, EXECUTED, PARTIALLY_FILLED, PENDING_CONFIRMATION]</msg>
+<status endtime="20251112 18:44:27.986" starttime="20251112 18:44:27.983" status="PASS"></status>
+</kw>
+<kw library="Collections" name="List Should Contain Value">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${history}</arg>
+<arg>PARTIALLY_FILLED</arg>
+</arguments>
+<status endtime="20251112 18:44:27.991" starttime="20251112 18:44:27.987" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:27.991" starttime="20251112 18:44:25.844" status="PASS"></status>
+</test>
+<test name="Trade Cancelled Before Confirmation" id="s1-s1-t7">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:27.998">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:27.998" starttime="20251112 18:44:27.994" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:28.004">${row} = {u'trader': u'Alice', u'isin': u'US1234567890', u'tradeId': u'', u'side': u'BUY', u'limitPrice': 101.25, u'quantity': 1000000}</msg>
+<status endtime="20251112 18:44:28.004" starttime="20251112 18:44:27.999" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:28.228">${trade_id} = cfd8f2cb-ffe0-41ff-81f5-79979bfa9699</msg>
+<status endtime="20251112 18:44:28.229" starttime="20251112 18:44:28.006" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:28.231">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:28.235" starttime="20251112 18:44:28.229" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:28.235">${trade_id} = cfd8f2cb-ffe0-41ff-81f5-79979bfa9699</msg>
+<status endtime="20251112 18:44:28.235" starttime="20251112 18:44:28.004" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:30.237">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:30.239" starttime="20251112 18:44:28.236" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Retry Execution With Defaults">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Retry Execution With Backoff">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>${MAX_RETRIES}</arg>
+</arguments>
+<status endtime="20251112 18:44:30.247" starttime="20251112 18:44:30.243" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:30.248" starttime="20251112 18:44:30.239" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Cancel Trade">
+<arguments>
+<arg>${trade_id}</arg>
+<arg>Trader requested cancellation</arg>
+</arguments>
+<status endtime="20251112 18:44:30.253" starttime="20251112 18:44:30.248" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Trade State History">
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<assign>
+<var>${history}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.257">${history} = [CREATED, EXECUTED, PENDING_CONFIRMATION, CANCELLED]</msg>
+<status endtime="20251112 18:44:30.257" starttime="20251112 18:44:30.253" status="PASS"></status>
+</kw>
+<kw library="Collections" name="List Should Contain Value">
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<arguments>
+<arg>${history}</arg>
+<arg>CANCELLED</arg>
+</arguments>
+<status endtime="20251112 18:44:30.262" starttime="20251112 18:44:30.257" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:30.263" starttime="20251112 18:44:27.992" status="PASS"></status>
+</test>
+<test name="Multiple Concurrent Traders" id="s1-s1-t8">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Load Trades From Csv">
+<arguments>
+<arg>${DATA_CSV}</arg>
+</arguments>
+<assign>
+<var>${rows}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.268">${rows} = [{trader=Alice, isin=US1234567890, tradeId=, side=BUY, limitPrice=101.25, quantity=1000000}, {trader=Bob, isin=GB0987654321, tradeId=, side=SELL, limitPrice=99.75, quantity=500000}, {trader=Charlie, i...</msg>
+<status endtime="20251112 18:44:30.268" starttime="20251112 18:44:30.265" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Create List">
+<doc>Returns a list containing given items.</doc>
+<assign>
+<var>@{trade_ids}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.270">@{trade_ids} = [ ]</msg>
+<status endtime="20251112 18:44:30.270" starttime="20251112 18:44:30.268" status="PASS"></status>
+</kw>
+<kw type="for" name="${index} IN RANGE [ 0 | 3 ]">
+<msg level="WARN" timestamp="20251112 18:44:30.272">Error in file '/Users/admin/Downloads/E-trading-robot-framework/bond-trading-framework/src/test/robot/tests/bond_trading.robot' in FOR loop starting on line 79: For loop header ':FOR' is deprecated. Use 'FOR' instead.</msg>
+<msg level="WARN" timestamp="20251112 18:44:30.275">Error in file '/Users/admin/Downloads/E-trading-robot-framework/bond-trading-framework/src/test/robot/tests/bond_trading.robot' in FOR loop starting on line 79: Marking for loop body with '\' is deprecated. Remove markers and use 'END' instead.</msg>
+<kw type="foritem" name="${index} = 0">
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.296">${row} = {u'trader': u'Alice', u'isin': u'US1234567890', u'tradeId': u'', u'side': u'BUY', u'limitPrice': 101.25, u'quantity': 1000000}</msg>
+<status endtime="20251112 18:44:30.297" starttime="20251112 18:44:30.285" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.472">${trade_id} = 79856de2-042d-4e68-bdce-ca8d90c504c9</msg>
+<status endtime="20251112 18:44:30.473" starttime="20251112 18:44:30.299" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:30.474">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:30.477" starttime="20251112 18:44:30.473" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:30.478">${trade_id} = 79856de2-042d-4e68-bdce-ca8d90c504c9</msg>
+<status endtime="20251112 18:44:30.478" starttime="20251112 18:44:30.297" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Append To List">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${trade_ids}</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:30.482" starttime="20251112 18:44:30.478" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:30.482" starttime="20251112 18:44:30.283" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${index} = 1">
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.488">${row} = {u'trader': u'Bob', u'isin': u'GB0987654321', u'tradeId': u'', u'side': u'SELL', u'limitPrice': 99.75, u'quantity': 500000}</msg>
+<status endtime="20251112 18:44:30.488" starttime="20251112 18:44:30.483" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.636">${trade_id} = d36ddfe1-39c0-4446-a5ee-589f0f45cf67</msg>
+<status endtime="20251112 18:44:30.636" starttime="20251112 18:44:30.492" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:30.637">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:30.642" starttime="20251112 18:44:30.636" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:30.643">${trade_id} = d36ddfe1-39c0-4446-a5ee-589f0f45cf67</msg>
+<status endtime="20251112 18:44:30.643" starttime="20251112 18:44:30.489" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Append To List">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${trade_ids}</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:30.648" starttime="20251112 18:44:30.643" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:30.648" starttime="20251112 18:44:30.482" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${index} = 2">
+<kw library="Collections" name="Get From List">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${rows}</arg>
+<arg>${index}</arg>
+</arguments>
+<assign>
+<var>${row}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.664">${row} = {u'trader': u'Charlie', u'isin': u'DE4455667788', u'tradeId': u'', u'side': u'BUY', u'limitPrice': 100.1, u'quantity': 750000}</msg>
+<status endtime="20251112 18:44:30.664" starttime="20251112 18:44:30.650" status="PASS"></status>
+</kw>
+<kw library="trading_keywords" name="Create Trade From Data">
+<arguments>
+<arg>${row}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>${row['isin']}</arg>
+<arg>${row['trader']}</arg>
+<arg>${row['quantity']}</arg>
+<arg>${row['side']}</arg>
+<arg>${row['limitPrice']}</arg>
+</arguments>
+<assign>
+<var>${trade_id}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:30.919">${trade_id} = 1780f65c-7423-4dd2-9d8d-9c3500a47d12</msg>
+<status endtime="20251112 18:44:30.919" starttime="20251112 18:44:30.667" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Return From Keyword">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${trade_id}</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:30.920">Returning from the enclosing user keyword.</msg>
+<status endtime="20251112 18:44:30.923" starttime="20251112 18:44:30.919" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20251112 18:44:30.924">${trade_id} = 1780f65c-7423-4dd2-9d8d-9c3500a47d12</msg>
+<status endtime="20251112 18:44:30.924" starttime="20251112 18:44:30.665" status="PASS"></status>
+</kw>
+<kw library="Collections" name="Append To List">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${trade_ids}</arg>
+<arg>${trade_id}</arg>
+</arguments>
+<status endtime="20251112 18:44:30.928" starttime="20251112 18:44:30.924" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:30.928" starttime="20251112 18:44:30.649" status="PASS"></status>
+</kw>
+<status endtime="20251112 18:44:30.929" starttime="20251112 18:44:30.271" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:32.934">Slept 2 seconds</msg>
+<status endtime="20251112 18:44:32.936" starttime="20251112 18:44:30.929" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Execute Trades Concurrently">
+<arguments>
+<arg>${trade_ids}</arg>
+</arguments>
+<status endtime="20251112 18:44:32.942" starttime="20251112 18:44:32.936" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Confirm Trades">
+<arguments>
+<arg>${trade_ids}</arg>
+<arg>${TOLERANCE_BPS}</arg>
+</arguments>
+<status endtime="20251112 18:44:32.947" starttime="20251112 18:44:32.942" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Validate Trader Exposure">
+<arguments>
+<arg>Alice</arg>
+<arg>1000000</arg>
+</arguments>
+<status endtime="20251112 18:44:33.023" starttime="20251112 18:44:32.948" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Validate Trader Exposure">
+<arguments>
+<arg>Bob</arg>
+<arg>500000</arg>
+</arguments>
+<status endtime="20251112 18:44:33.325" starttime="20251112 18:44:33.023" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:33.326" starttime="20251112 18:44:30.264" status="PASS"></status>
+</test>
+<test name="Rapid Market Update Reflected" id="s1-s1-t9">
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Subscribe To Market Feed">
+<arguments>
+<arg>US1234567890</arg>
+</arguments>
+<status endtime="20251112 18:44:33.334" starttime="20251112 18:44:33.331" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Sleep">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg level="INFO" timestamp="20251112 18:44:43.342">Slept 10 seconds</msg>
+<status endtime="20251112 18:44:43.344" starttime="20251112 18:44:33.334" status="PASS"></status>
+</kw>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Get Captured Market Updates">
+<arguments>
+<arg>US1234567890</arg>
+</arguments>
+<assign>
+<var>${updates}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:43.351">${updates} = [{bid=99.95, mid=100.0, isin=US1234567890, timestamp=2025-11-12T13:14:33.333645Z, ask=100.05}, {bid=99.95, mid=100.0, isin=US1234567890, timestamp=2025-11-12T13:14:33.333645Z, ask=100.05}, {bid=99.95,...</msg>
+<status endtime="20251112 18:44:43.351" starttime="20251112 18:44:43.345" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Get Length">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${updates}</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg level="INFO" timestamp="20251112 18:44:43.354">Length is 14</msg>
+<msg level="INFO" timestamp="20251112 18:44:43.355">${count} = 14</msg>
+<status endtime="20251112 18:44:43.355" starttime="20251112 18:44:43.352" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be True">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${count} &gt;= 1</arg>
+<arg>At least 1 market update should be captured, got ${count}</arg>
+</arguments>
+<status endtime="20251112 18:44:43.361" starttime="20251112 18:44:43.355" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:43.362" starttime="20251112 18:44:33.328" status="PASS"></status>
+</test>
+<test name="Risk Breach Attempt Fails" id="s1-s1-t10">
+<kw library="BuiltIn" name="Run Keyword And Expect Error">
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<arguments>
+<arg>*Trade limit exceeded*</arg>
+<arg>Create Trade</arg>
+<arg>US1234567890</arg>
+<arg>Bob</arg>
+<arg>5000000</arg>
+<arg>BUY</arg>
+<arg>105.0</arg>
+</arguments>
+<kw library="com.trading.robot.keywords.TradingKeywords" name="Create Trade">
+<arguments>
+<arg>US1234567890</arg>
+<arg>Bob</arg>
+<arg>5000000</arg>
+<arg>BUY</arg>
+<arg>105.0</arg>
+</arguments>
+<msg level="FAIL" timestamp="20251112 18:44:43.395">TradeException: Trade limit exceeded for trader Bob</msg>
+<status endtime="20251112 18:44:43.396" starttime="20251112 18:44:43.365" status="FAIL"></status>
+</kw>
+<status endtime="20251112 18:44:43.398" starttime="20251112 18:44:43.364" status="PASS"></status>
+</kw>
+<timeout value="5 minutes"></timeout>
+<status critical="yes" endtime="20251112 18:44:43.399" starttime="20251112 18:44:43.363" status="PASS"></status>
+</test>
+<kw type="teardown" library="com.trading.robot.keywords.TradingKeywords" name="Shutdown Trading Engine">
+<status endtime="20251112 18:44:43.411" starttime="20251112 18:44:43.409" status="PASS"></status>
+</kw>
+<doc>End-to-end bond trading lifecycle scenarios with Java-backed keywords.</doc>
+<status endtime="20251112 18:44:43.411" starttime="20251112 18:44:13.710" status="PASS"></status>
+</suite>
+<status endtime="20251112 18:44:43.459" starttime="20251112 18:44:13.596" status="PASS"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="10" fail="0">Critical Tests</stat>
+<stat pass="10" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="10" fail="0" name="Tests" id="s1">Tests</stat>
+<stat pass="10" fail="0" name="Bond Trading" id="s1-s1">Tests.Bond Trading</stat>
+</suite>
+</statistics>
+<errors>
+<msg level="WARN" timestamp="20251112 18:44:30.272">Error in file '/Users/admin/Downloads/E-trading-robot-framework/bond-trading-framework/src/test/robot/tests/bond_trading.robot' in FOR loop starting on line 79: For loop header ':FOR' is deprecated. Use 'FOR' instead.</msg>
+<msg level="WARN" timestamp="20251112 18:44:30.275">Error in file '/Users/admin/Downloads/E-trading-robot-framework/bond-trading-framework/src/test/robot/tests/bond_trading.robot' in FOR loop starting on line 79: Marking for loop body with '\' is deprecated. Remove markers and use 'END' instead.</msg>
+</errors>
+</robot>

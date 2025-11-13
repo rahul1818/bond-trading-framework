@@ -1,0 +1,368 @@
+{
+  "uuid" : "bd998cf8-12ed-47a4-8a7d-2ab8cc45e131",
+  "name" : "Multiple Concurrent Traders",
+  "fullName" : "Bond Trading.Multiple Concurrent Traders",
+  "status" : "passed",
+  "stage" : "finished",
+  "start" : 1762973070264,
+  "stop" : 1762973073326,
+  "duration" : 3062,
+  "statusDetails" : {
+    "message" : "",
+    "trace" : ""
+  },
+  "steps" : [ {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Load Trades From Csv",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070265,
+    "stop" : 1762973070268,
+    "duration" : 3,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Create List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070268,
+    "stop" : 1762973070270,
+    "duration" : 2,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "${index} IN RANGE [ 0 | 3 ]",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070271,
+    "stop" : 1762973070929,
+    "duration" : 658,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "${index} = 0",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070283,
+    "stop" : 1762973070482,
+    "duration" : 199,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Get From List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070285,
+    "stop" : 1762973070297,
+    "duration" : 12,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Create Trade From Data",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070297,
+    "stop" : 1762973070478,
+    "duration" : 181,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070299,
+    "stop" : 1762973070473,
+    "duration" : 174,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Return From Keyword",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070473,
+    "stop" : 1762973070477,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Append To List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070478,
+    "stop" : 1762973070482,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "${index} = 1",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070482,
+    "stop" : 1762973070648,
+    "duration" : 166,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Get From List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070483,
+    "stop" : 1762973070488,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Create Trade From Data",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070489,
+    "stop" : 1762973070643,
+    "duration" : 154,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070492,
+    "stop" : 1762973070636,
+    "duration" : 144,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Return From Keyword",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070636,
+    "stop" : 1762973070642,
+    "duration" : 6,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Append To List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070643,
+    "stop" : 1762973070648,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "${index} = 2",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070649,
+    "stop" : 1762973070928,
+    "duration" : 279,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Get From List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070650,
+    "stop" : 1762973070664,
+    "duration" : 14,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Create Trade From Data",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070665,
+    "stop" : 1762973070924,
+    "duration" : 259,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070667,
+    "stop" : 1762973070919,
+    "duration" : 252,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Return From Keyword",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070919,
+    "stop" : 1762973070923,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Append To List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070924,
+    "stop" : 1762973070928,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Sleep",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070929,
+    "stop" : 1762973072936,
+    "duration" : 2007,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Execute Trades Concurrently",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973072936,
+    "stop" : 1762973072942,
+    "duration" : 6,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Confirm Trades",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973072942,
+    "stop" : 1762973072947,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Validate Trader Exposure",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973072948,
+    "stop" : 1762973073023,
+    "duration" : 75,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Validate Trader Exposure",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973073023,
+    "stop" : 1762973073325,
+    "duration" : 302,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  } ],
+  "attachments" : [ ],
+  "parameters" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "testClass",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "package",
+    "value" : "com.trading.robot.tests"
+  }, {
+    "name" : "framework",
+    "value" : "robotframework"
+  } ]
+}

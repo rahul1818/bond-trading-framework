@@ -1,0 +1,56 @@
+{
+  "uuid" : "2083bb03-b53d-4532-846a-b39ba2be848a",
+  "name" : "Invalid Instrument Should Fail",
+  "fullName" : "Bond Trading.Invalid Instrument Should Fail",
+  "status" : "passed",
+  "stage" : "finished",
+  "start" : 1762973059266,
+  "stop" : 1762973059297,
+  "duration" : 31,
+  "statusDetails" : {
+    "message" : "",
+    "trace" : ""
+  },
+  "steps" : [ {
+    "name" : "BuiltIn.Run Keyword And Expect Error",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973059268,
+    "stop" : 1762973059296,
+    "duration" : 28,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "failed",
+    "stage" : "finished",
+    "start" : 1762973059269,
+    "stop" : 1762973059290,
+    "duration" : 21,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  } ],
+  "attachments" : [ ],
+  "parameters" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "testClass",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "package",
+    "value" : "com.trading.robot.tests"
+  }, {
+    "name" : "framework",
+    "value" : "robotframework"
+  } ]
+}

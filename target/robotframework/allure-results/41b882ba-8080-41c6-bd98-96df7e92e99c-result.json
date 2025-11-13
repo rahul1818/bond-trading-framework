@@ -1,0 +1,173 @@
+{
+  "uuid" : "41b882ba-8080-41c6-bd98-96df7e92e99c",
+  "name" : "Trade Cancelled Before Confirmation",
+  "fullName" : "Bond Trading.Trade Cancelled Before Confirmation",
+  "status" : "passed",
+  "stage" : "finished",
+  "start" : 1762973067992,
+  "stop" : 1762973070263,
+  "duration" : 2271,
+  "statusDetails" : {
+    "message" : "",
+    "trace" : ""
+  },
+  "steps" : [ {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Load Trades From Csv",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973067994,
+    "stop" : 1762973067998,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.Get From List",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973067999,
+    "stop" : 1762973068004,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Create Trade From Data",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973068004,
+    "stop" : 1762973068235,
+    "duration" : 231,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Create Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973068006,
+    "stop" : 1762973068229,
+    "duration" : 223,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Return From Keyword",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973068229,
+    "stop" : 1762973068235,
+    "duration" : 6,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "BuiltIn.Sleep",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973068236,
+    "stop" : 1762973070239,
+    "duration" : 2003,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "trading_keywords.Retry Execution With Defaults",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070239,
+    "stop" : 1762973070248,
+    "duration" : 9,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Retry Execution With Backoff",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070243,
+    "stop" : 1762973070247,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Cancel Trade",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070248,
+    "stop" : 1762973070253,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "com.trading.robot.keywords.TradingKeywords.Get Trade State History",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070253,
+    "stop" : 1762973070257,
+    "duration" : 4,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  }, {
+    "name" : "Collections.List Should Contain Value",
+    "status" : "passed",
+    "stage" : "finished",
+    "start" : 1762973070257,
+    "stop" : 1762973070262,
+    "duration" : 5,
+    "statusDetails" : {
+      "message" : "",
+      "trace" : ""
+    },
+    "attachments" : [ ],
+    "parameters" : [ ]
+  } ],
+  "attachments" : [ ],
+  "parameters" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "testClass",
+    "value" : "Bond Trading"
+  }, {
+    "name" : "package",
+    "value" : "com.trading.robot.tests"
+  }, {
+    "name" : "framework",
+    "value" : "robotframework"
+  } ]
+}
