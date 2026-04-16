@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Version from tag
+        id: ver
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Build JAR
+        run: mvn -B package -DskipTests
+
+      - name: Package JAR and ZIP for GitHub Release
+        env:
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          set -euo pipefail
+          OUT_JAR="bond-trading-framework-${VERSION}.jar"
+          STAGE="bond-trading-framework-${VERSION}"
+
+          mapfile -t jars < <(find target -maxdepth 1 -name "bond-trading-framework-*.jar" \
+            ! -name "*-sources.jar" ! -name "*-javadoc.jar" | sort)
+          if [[ ${#jars[@]} -ne 1 ]]; then
+            echo "Expected exactly one main JAR in target/, found ${#jars[@]}: ${jars[*]}"
+            exit 1
+          fi
+          cp "${jars[0]}" "$OUT_JAR"
+
+          mkdir -p "$STAGE"
+          rsync -a \
+            --exclude='.git' \
+            --exclude='target' \
+            --exclude="$STAGE" \
+            ./ "$STAGE/"
+          cp "$OUT_JAR" "$STAGE/"
+
+          zip -rq "bond-trading-framework-${VERSION}.zip" "$STAGE"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            bond-trading-framework-${{ steps.ver.outputs.version }}.jar
+            bond-trading-framework-${{ steps.ver.outputs.version }}.zip
+          generate_release_notes: true
