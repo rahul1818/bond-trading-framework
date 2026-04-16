@@ -20,7 +20,32 @@
     <commons.csv.version>1.11.0</commons.csv.version>
     <jackson.version>2.17.2</jackson.version>
     <allure.maven.plugin.version>2.12.0</allure.maven.plugin.version>
+    <skipATs>false</skipATs>
   </properties>
+
+  <profiles>
+    <profile>
+      <id>github-packages</id>
+      <activation>
+        <property>
+          <name>env.GITHUB_ACTIONS</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
+        </repository>
+        <snapshotRepository>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/${env.GITHUB_REPOSITORY}</url>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
@@ -115,6 +140,7 @@
               <goal>java</goal>
             </goals>
             <configuration>
+              <skip>${skipATs}</skip>
               <mainClass>com.trading.robot.reporting.AllureReportGenerator</mainClass>
               <classpathScope>test</classpathScope>
               <arguments>
